@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: form-ingress
+  labels:
+    name: form-ingress
+spec:
+  rules:
+    # - host: localhost
+    - http:
+        paths:
+          - pathType: Prefix
+            path: "/index.html"
+            backend:
+              service:
+                name: form-service
+                port:
+                  number: 8080
+          
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: php-my-admin-service
+                port:
+                  number: 3000
+ 
+
+
+                  
+
+                 
